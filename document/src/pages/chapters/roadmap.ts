@@ -76,10 +76,11 @@ export const CHAPTER_BLURBS: ChapterBlurb[] = [
         n: 7,
         title: {en: "Brief Remarks on Optimization", ko: "최적화 개요"},
         blurb: {
-            en: "Where the course lands: convex sets and functions, quadratic programs, and " +
-                "linear programs that minimize the 1-norm and the max-norm.",
-            ko: "이 과목이 닿는 지점. 볼록 집합과 볼록 함수, quadratic program, 그리고 1-norm과 " +
-                "max-norm을 최소화하는 linear program.",
+            en: "Where the course lands: convexity, which makes a local minimum a global one, " +
+                "then quadratic programs and the linear programs that minimize the 1-norm and " +
+                "the max-norm.",
+            ko: "이 과목이 닿는 지점. 국소 최솟값을 전역 최솟값으로 만드는 볼록성, 그다음 quadratic " +
+                "program, 그리고 1-norm과 max-norm을 최소화하는 linear program.",
         },
     },
 ];
