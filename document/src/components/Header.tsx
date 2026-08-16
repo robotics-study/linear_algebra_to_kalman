@@ -41,7 +41,12 @@ const Header = ({onMenu, showMenu}: { onMenu: () => void; showMenu: boolean }) =
                 </a>
                 <span className="crumb-sep" aria-hidden="true">/</span>
                 <button className="brand" onClick={() => go(null)} aria-label="Home">
-                    <span className="wm">linear algebra<span className="wm-dim"> → kalman</span></span>
+                    {/* 좁은 화면에서는 앞부분을 줄여 언어 토글 위로 글자가 넘치지 않게 한다. */}
+                    <span className="wm">
+                        <span className="wm-long">linear algebra</span>
+                        <span className="wm-abbr">LA</span>
+                        <span className="wm-dim"> → kalman</span>
+                    </span>
                 </button>
             </div>
 

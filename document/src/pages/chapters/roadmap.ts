@@ -15,7 +15,7 @@ export const CHAPTER_BLURBS: ChapterBlurb[] = [
             en: "The notation and the moves: direct proof, contrapositive, exhaustion, induction, " +
                 "contradiction, truth tables, negating quantified statements, and what makes the " +
                 "real numbers special.",
-            ko: "기호와 손기술. 직접 증명, 대우, 경우 나누기, 귀납법, 귀류법, 진리표, 양화 명제의 부정, " +
+            ko: "기호와 손기술. 직접 증명, 대우, exhaustion, 귀납법, 귀류법, 진리표, quantifier 명제의 부정, " +
                 "그리고 실수를 특별하게 만드는 성질.",
         },
     },
@@ -26,7 +26,7 @@ export const CHAPTER_BLURBS: ChapterBlurb[] = [
             en: "Practicing proofs where the ground is familiar: vector spaces over a field, " +
                 "subspaces, independence, basis and dimension, change of basis, linear operators, " +
                 "and diagonalization.",
-            ko: "익숙한 땅에서 증명을 연습한다. 체 위의 벡터 공간, 부분 공간, 일차 독립, 기저와 차원, " +
+            ko: "익숙한 땅에서 증명을 연습한다. 체 위의 벡터 공간, 부분 공간, 선형 독립, 기저와 차원, " +
                 "기저 변환, 선형 연산자, 대각화.",
         },
     },
@@ -36,7 +36,7 @@ export const CHAPTER_BLURBS: ChapterBlurb[] = [
         blurb: {
             en: "Length and angle turn algebra into geometry: norms, inner products, Gram-Schmidt, " +
                 "the projection theorem and the normal equations, quadratic forms, and least squares.",
-            ko: "길이와 각도가 대수를 기하로 바꾼다. norm과 내적, Gram-Schmidt, 사영 정리와 정규 방정식, " +
+            ko: "길이와 각도가 대수를 기하로 바꾼다. norm과 내적, Gram-Schmidt, 사영 정리와 normal equation, " +
                 "이차 형식, 그리고 최소제곱.",
         },
     },
@@ -69,7 +69,7 @@ export const CHAPTER_BLURBS: ChapterBlurb[] = [
                 "sets, Cauchy sequences and completeness, the contraction mapping theorem, " +
                 "continuity, and compactness.",
             ko: "알고리즘은 언제 수렴하고, 최솟값은 언제 존재하는가. 열린 집합과 닫힌 집합, Cauchy 수열과 " +
-                "완비성, 축약 사상 정리, 연속성, 컴팩트성.",
+                "완비성, Contraction Mapping 정리, 연속성, 컴팩트성.",
         },
     },
     {

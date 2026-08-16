@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import {ReactNode, useState} from "react";
 import cn from "../../libs/cn";
 import {useTr} from "../../libs/i18n";
 
@@ -37,11 +37,15 @@ const Statement = ({kind, n, title, children, className}: StatementProps & {kind
     const [en, ko] = LABEL[kind];
     return (
         <section className={cn("stmt", `stmt-${kind}`, className)}>
-            <p className="stmt-head">
+            {/* 라벨은 카드 테두리 위에 걸린다. 긴 제목이 라벨과 겹치지 않도록 제목은 본문 첫 줄에 둔다.
+                본문 산문용 p 규칙(.content-inner p)이 여백을 덮어쓰지 않도록 div 로 둔다. */}
+            <div className="stmt-head">
                 <span className="stmt-kind">{t(en, ko)}{n ? ` ${n}` : ""}</span>
-                {title && <span className="stmt-title">{title}</span>}
-            </p>
-            <div className="stmt-body">{children}</div>
+            </div>
+            <div className="stmt-body">
+                {title && <div className="stmt-title">{title}</div>}
+                {children}
+            </div>
         </section>
     );
 };
@@ -56,15 +60,23 @@ export const Remark = (props: StatementProps) => <Statement kind="remark" {...pr
 
 // 증명은 기본으로 접어 둔다. 결과만 훑는 독자가 증명 더미를 스크롤로 넘기지 않아도 되고,
 // 따라가려는 독자는 펼쳐서 읽는다. open 으로 처음부터 펼친 상태를 강제할 수 있다.
+// 진술 카드 안에서는 카드 바닥에 붙는 전폭 행으로 렌더된다. 작은 버튼 하나만 떠 있으면
+// 카드가 비어 보이고, 눌러서 펼치는 것이라는 신호도 약하다.
 export const Proof = ({label, children, open}: {
     label?: ReactNode;
     children: ReactNode;
     open?: boolean;
 }) => {
     const t = useTr();
+    const [isOpen, setIsOpen] = useState(!!open);
     return (
-        <details className="proof" open={open}>
-            <summary>{label ?? t("Proof", "증명")}</summary>
+        <details className="proof" open={open} onToggle={(e) => setIsOpen(e.currentTarget.open)}>
+            <summary>
+                <span className="proof-label">{label ?? t("Proof", "증명")}</span>
+                <span className="proof-hint">
+                    {isOpen ? t("hide", "접기") : t("read it", "펼쳐 보기")}
+                </span>
+            </summary>
             <div className="proof-body">
                 {children}
                 <p className="qed" aria-hidden="true">∎</p>
