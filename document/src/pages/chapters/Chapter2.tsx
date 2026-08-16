@@ -1582,7 +1582,7 @@ const Chapter2 = () => {
                         <InlineMath math={"\\mathcal{S}"}/>의 원소들로 만드는 모든 선형 결합의 집합이다.
                     </p>}
                 />
-                <BlockMath math={"\\operatorname{span}\\{\\mathcal{S}\\} := \\{x \\in \\mathcal{X} \\mid \\exists\\, n \\ge 1, \\; \\alpha_1, \\ldots, \\alpha_n \\in \\mathcal{F}, \\; v^1, \\ldots, v^n \\in \\mathcal{S} \\text{ s.t. } x = \\alpha_1 v^1 + \\cdots + \\alpha_n v^n\\}"}/>
+                <BlockMath math={"\\begin{aligned} \\operatorname{span}\\{\\mathcal{S}\\} := \\{ x \\in \\mathcal{X} \\mid \\;\\; & \\exists\\, n \\ge 1, \\; \\alpha_1, \\ldots, \\alpha_n \\in \\mathcal{F}, \\; v^1, \\ldots, v^n \\in \\mathcal{S} \\\\ & \\text{s.t. } x = \\alpha_1 v^1 + \\cdots + \\alpha_n v^n \\, \\} \\end{aligned}"}/>
                 <Terms items={[
                     ["\\mathcal{S}", <T en={<>any subset of <InlineMath math={"\\mathcal{X}"}/>, possibly infinite</>}
                                        ko={<><InlineMath math={"\\mathcal{X}"}/>의 임의의 부분집합. 무한해도 된다</>}/>],
@@ -2139,7 +2139,7 @@ const Chapter2 = () => {
                             식을 뺀 뒤, 벡터마다 두 계수를 묶으면 된다.
                         </p>}
                     />
-                    <BlockMath math={"0 = x - x = (\\alpha_1 v^1 + \\cdots + \\alpha_n v^n) - (\\beta_1 v^1 + \\cdots + \\beta_n v^n) = (\\alpha_1 - \\beta_1) v^1 + \\cdots + (\\alpha_n - \\beta_n) v^n"}/>
+                    <BlockMath math={"\\begin{aligned} 0 = x - x &= (\\alpha_1 v^1 + \\cdots + \\alpha_n v^n) - (\\beta_1 v^1 + \\cdots + \\beta_n v^n) \\\\ &= (\\alpha_1 - \\beta_1) v^1 + \\cdots + (\\alpha_n - \\beta_n) v^n \\end{aligned}"}/>
                     <Terms items={[
                         ["\\alpha_i, \\beta_i", <T en={<>the coefficients of two candidate expansions of the same vector</>}
                                                  ko={<>같은 벡터를 적은 두 후보 전개의 계수</>}/>],
@@ -2545,7 +2545,7 @@ const Chapter2 = () => {
                         열로 세우면
                     </p>}
                 />
-                <BlockMath math={"P = \\begin{bmatrix} [u^1]_{\\bar u} & [u^2]_{\\bar u} \\end{bmatrix} = \\frac{1}{2}\\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix}, \\qquad P \\bar P = \\frac{1}{2}\\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix}\\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix} = \\frac{1}{2}\\begin{bmatrix} 2 & 0 \\\\ 0 & 2 \\end{bmatrix} = I"}/>
+                <BlockMath math={"\\begin{aligned} P &= \\begin{bmatrix} [u^1]_{\\bar u} & [u^2]_{\\bar u} \\end{bmatrix} = \\frac{1}{2}\\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix} \\\\ P \\bar P &= \\frac{1}{2}\\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix}\\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix} = \\frac{1}{2}\\begin{bmatrix} 2 & 0 \\\\ 0 & 2 \\end{bmatrix} = I \\end{aligned}"}/>
                 <Terms items={[
                     ["P", <T en={<>the matrix whose <InlineMath math={"i"}/>-th column is <InlineMath math={"[u^i]_{\\bar u}"}/>: it converts <InlineMath math={"u"}/>-coordinates into <InlineMath math={"\\bar u"}/>-coordinates</>}
                             ko={<><InlineMath math={"i"}/>번째 열이 <InlineMath math={"[u^i]_{\\bar u}"}/>인 행렬. <InlineMath math={"u"}/> 좌표를 <InlineMath math={"\\bar u"}/> 좌표로 바꿔 준다</>}/>],
@@ -2960,7 +2960,7 @@ const Chapter2 = () => {
                         벡터를 하나씩 미분해 그 좌표를 적으라고 말한다.
                     </p>}
                 />
-                <BlockMath math={"\\mathcal{L}(1) = 0 \\to \\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}, \\quad \\mathcal{L}(t) = 1 \\to \\begin{bmatrix} 1 \\\\ 0 \\\\ 0 \\end{bmatrix}, \\quad \\mathcal{L}(t^2) = 2t \\to \\begin{bmatrix} 0 \\\\ 2 \\\\ 0 \\end{bmatrix} \\quad \\Longrightarrow \\quad A = \\begin{bmatrix} 0 & 1 & 0 \\\\ 0 & 0 & 2 \\\\ 0 & 0 & 0 \\end{bmatrix}"}/>
+                <BlockMath math={"\\begin{aligned} & \\mathcal{L}(1) = 0 \\to \\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}, \\quad \\mathcal{L}(t) = 1 \\to \\begin{bmatrix} 1 \\\\ 0 \\\\ 0 \\end{bmatrix}, \\quad \\mathcal{L}(t^2) = 2t \\to \\begin{bmatrix} 0 \\\\ 2 \\\\ 0 \\end{bmatrix} \\\\[2pt] & \\Longrightarrow \\quad A = \\begin{bmatrix} 0 & 1 & 0 \\\\ 0 & 0 & 2 \\\\ 0 & 0 & 0 \\end{bmatrix} \\end{aligned}"}/>
                 <Terms items={[
                     ["\\mathcal{L}(t^2) = 2t", <T en={<>the image of the third basis vector, whose coordinates in <InlineMath math={"\\{1, t, t^2\\}"}/> are <InlineMath math={"(0, 2, 0)^\\top"}/></>}
                                                  ko={<>셋째 기저 벡터의 상. <InlineMath math={"\\{1, t, t^2\\}"}/>에서 좌표가 <InlineMath math={"(0, 2, 0)^\\top"}/>이다</>}/>],
@@ -3130,7 +3130,7 @@ const Chapter2 = () => {
                             <InlineMath math={"A"}/>를 적용한 뒤, <InlineMath math={"P"}/>로 돌아온다.
                         </p>}
                     />
-                    <BlockMath math={"\\bar A = P A P^{-1} = \\frac{1}{7}\\begin{bmatrix} 4 & 3 \\\\ 1 & -1 \\end{bmatrix} \\begin{bmatrix} 3 & -1 \\\\ 4 & 6 \\end{bmatrix} \\begin{bmatrix} 1 & 3 \\\\ 1 & -4 \\end{bmatrix} = \\frac{1}{7}\\begin{bmatrix} 24 & 14 \\\\ -1 & -7 \\end{bmatrix}\\begin{bmatrix} 1 & 3 \\\\ 1 & -4 \\end{bmatrix} = \\frac{1}{7}\\begin{bmatrix} 38 & 16 \\\\ -8 & 25 \\end{bmatrix}"}/>
+                    <BlockMath math={"\\begin{aligned} \\bar A = P A P^{-1} &= \\frac{1}{7}\\begin{bmatrix} 4 & 3 \\\\ 1 & -1 \\end{bmatrix} \\begin{bmatrix} 3 & -1 \\\\ 4 & 6 \\end{bmatrix} \\begin{bmatrix} 1 & 3 \\\\ 1 & -4 \\end{bmatrix} \\\\ &= \\frac{1}{7}\\begin{bmatrix} 24 & 14 \\\\ -1 & -7 \\end{bmatrix}\\begin{bmatrix} 1 & 3 \\\\ 1 & -4 \\end{bmatrix} = \\frac{1}{7}\\begin{bmatrix} 38 & 16 \\\\ -8 & 25 \\end{bmatrix} \\end{aligned}"}/>
                     <Terms items={[
                         ["\\bar A", <T en={<>the representation of the same operator <InlineMath math={"L"}/> in the basis <InlineMath math={"\\{v^1, v^2\\}"}/></>}
                                       ko={<>같은 연산자 <InlineMath math={"L"}/>을 기저 <InlineMath math={"\\{v^1, v^2\\}"}/>로 적은 표현</>}/>],
@@ -3248,7 +3248,7 @@ const Chapter2 = () => {
                         잡자. 먼저 특성 방정식을, 인용하지 말고 전개해서 적는다.
                     </p>}
                 />
-                <BlockMath math={"\\det(\\lambda I - A) = \\det\\begin{bmatrix} \\lambda - 2 & -1 \\\\ -1 & \\lambda - 2 \\end{bmatrix} = (\\lambda-2)^2 - 1 = \\lambda^2 - 4\\lambda + 3 = (\\lambda - 1)(\\lambda - 3)"}/>
+                <BlockMath math={"\\begin{aligned} \\det(\\lambda I - A) &= \\det\\begin{bmatrix} \\lambda - 2 & -1 \\\\ -1 & \\lambda - 2 \\end{bmatrix} = (\\lambda-2)^2 - 1 \\\\ &= \\lambda^2 - 4\\lambda + 3 = (\\lambda - 1)(\\lambda - 3) \\end{aligned}"}/>
                 <Terms items={[
                     ["\\lambda I - A", <T en={<>the matrix whose determinant we need, with <InlineMath math={"\\lambda"}/> on the diagonal and the off-diagonal entries negated</>}
                                          ko={<>행렬식을 구할 대상. 대각에 <InlineMath math={"\\lambda"}/>가 오고 비대각의 부호가 뒤집힌다</>}/>],
@@ -3267,7 +3267,7 @@ const Chapter2 = () => {
                         비가역이라 각 방정식의 해가 직선을 이룬다.
                     </p>}
                 />
-                <BlockMath math={"(A - 3I)v = \\begin{bmatrix} -1 & 1 \\\\ 1 & -1 \\end{bmatrix} v = 0 \\implies v^1 = \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix}, \\qquad (A - 1I)v = \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix} v = 0 \\implies v^2 = \\begin{bmatrix} 1 \\\\ -1 \\end{bmatrix}"}/>
+                <BlockMath math={"\\begin{aligned} (A - 3I)v &= \\begin{bmatrix} -1 & 1 \\\\ 1 & -1 \\end{bmatrix} v = 0 \\implies v^1 = \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} \\\\ (A - 1I)v &= \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix} v = 0 \\implies v^2 = \\begin{bmatrix} 1 \\\\ -1 \\end{bmatrix} \\end{aligned}"}/>
                 <Terms items={[
                     ["A - 3I", <T en={<>its first row reads <InlineMath math={"-v_1 + v_2 = 0"}/>, so <InlineMath math={"v_1 = v_2"}/> and any nonzero multiple of <InlineMath math={"(1,1)^\\top"}/> works</>}
                                  ko={<>첫 행이 <InlineMath math={"-v_1 + v_2 = 0"}/>이므로 <InlineMath math={"v_1 = v_2"}/>이고 <InlineMath math={"(1,1)^\\top"}/>의 0이 아닌 배수는 모두 해다</>}/>],
@@ -3294,7 +3294,7 @@ const Chapter2 = () => {
             </Example>
             <Example n="2.51" title={<T en={<>A real matrix with no real eigen-direction</>}
                                         ko={<>실수 고유 방향이 없는 실행렬</>}/>}>
-                <BlockMath math={"A = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix} \\implies \\det(\\lambda I - A) = \\det\\begin{bmatrix} \\lambda & -1 \\\\ 1 & \\lambda \\end{bmatrix} = \\lambda^2 + 1 = 0 \\implies \\lambda_1 = j, \\; \\lambda_2 = -j"}/>
+                <BlockMath math={"\\begin{aligned} A = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix} &\\implies \\det(\\lambda I - A) = \\det\\begin{bmatrix} \\lambda & -1 \\\\ 1 & \\lambda \\end{bmatrix} = \\lambda^2 + 1 = 0 \\\\ &\\implies \\lambda_1 = j, \\; \\lambda_2 = -j \\end{aligned}"}/>
                 <Terms items={[
                     ["A", <T en={<>rotation by 90 degrees, which maps no real direction to a multiple of itself</>}
                             ko={<>90도 회전. 어떤 실수 방향도 자기 자신의 배수로 보내지 않는다</>}/>],
@@ -3357,7 +3357,7 @@ const Chapter2 = () => {
             </Remark>
             <Definition n="2.52" title={<T en={<>Characteristic polynomial and multiplicities</>}
                                           ko={<>특성 다항식과 중복도</>}/>}>
-                <BlockMath math={"\\Delta(\\lambda) := \\det(\\lambda I - A) = (\\lambda - \\lambda_1)^{m_1} (\\lambda - \\lambda_2)^{m_2} \\cdots (\\lambda - \\lambda_p)^{m_p}, \\qquad \\eta_i := \\dim \\operatorname{null}(A - \\lambda_i I)"}/>
+                <BlockMath math={"\\begin{aligned} \\Delta(\\lambda) &:= \\det(\\lambda I - A) = (\\lambda - \\lambda_1)^{m_1} (\\lambda - \\lambda_2)^{m_2} \\cdots (\\lambda - \\lambda_p)^{m_p} \\\\ \\eta_i &:= \\dim \\operatorname{null}(A - \\lambda_i I) \\end{aligned}"}/>
                 <Terms items={[
                     ["\\Delta(\\lambda)", <T en={<>the characteristic polynomial; <InlineMath math={"\\Delta(\\lambda) = 0"}/> is the characteristic equation</>}
                                             ko={<>특성 다항식. <InlineMath math={"\\Delta(\\lambda) = 0"}/>이 특성 방정식이다</>}/>],
@@ -3796,7 +3796,7 @@ const Chapter2 = () => {
                             되고, 행렬식을 인수분해하려고 <InlineMath math={"P P^{-1}"}/>을 끼워 넣는다.
                         </p>}
                     />
-                    <BlockMath math={"\\det(\\lambda I - P A P^{-1}) = \\det\\big(P (\\lambda I - A) P^{-1}\\big) = \\det(P) \\det(\\lambda I - A) \\det(P)^{-1} = \\det(\\lambda I - A)"}/>
+                    <BlockMath math={"\\begin{aligned} \\det(\\lambda I - P A P^{-1}) &= \\det\\big(P (\\lambda I - A) P^{-1}\\big) \\\\ &= \\det(P) \\det(\\lambda I - A) \\det(P)^{-1} = \\det(\\lambda I - A) \\end{aligned}"}/>
                     <Terms items={[
                         ["\\lambda I - PAP^{-1}", <T en={<>equal to <InlineMath math={"P(\\lambda I)P^{-1} - PAP^{-1}"}/>, since <InlineMath math={"P (\\lambda I) P^{-1} = \\lambda I"}/></>}
                                                     ko={<><InlineMath math={"P (\\lambda I) P^{-1} = \\lambda I"}/>이므로 <InlineMath math={"P(\\lambda I)P^{-1} - PAP^{-1}"}/>과 같다</>}/>],
@@ -4146,7 +4146,7 @@ const Chapter2 = () => {
                             <InlineMath math={"A + BCD"}/>와 주장된 역행렬의 곱을 전개한다.
                         </p>}
                     />
-                    <BlockMath math={"(A + BCD)\\big(A^{-1} - A^{-1}B S^{-1} D A^{-1}\\big) = I - B S^{-1} D A^{-1} + BCDA^{-1} - BC(DA^{-1}B)S^{-1}DA^{-1}"}/>
+                    <BlockMath math={"\\begin{aligned} (A + BCD)\\big(A^{-1} - A^{-1}B S^{-1} D A^{-1}\\big) &= I - B S^{-1} D A^{-1} + BCDA^{-1} \\\\ &\\quad - BC(DA^{-1}B)S^{-1}DA^{-1} \\end{aligned}"}/>
                     <Terms items={[
                         ["S", <T en={<>shorthand for <InlineMath math={"C^{-1} + DA^{-1}B"}/>, the small invertible matrix</>}
                                 ko={<><InlineMath math={"C^{-1} + DA^{-1}B"}/>의 줄임말. 작은 가역 행렬이다</>}/>],
@@ -4160,7 +4160,7 @@ const Chapter2 = () => {
                         those out:</p>}
                        ko={<p><InlineMath math={"I"}/>를 뺀 모든 항이 <InlineMath math={"B"}/>로 시작해{" "}
                            <InlineMath math={"D A^{-1}"}/>로 끝나므로 그 둘을 밖으로 묶어낸다.</p>}/>
-                    <BlockMath math={"= I + B\\big[\\!-S^{-1} + C - C(DA^{-1}B)S^{-1}\\big]DA^{-1} = I + B\\,C\\big[I - (C^{-1} + DA^{-1}B)S^{-1}\\big]DA^{-1}"}/>
+                    <BlockMath math={"\\begin{aligned} &= I + B\\big[\\!-S^{-1} + C - C(DA^{-1}B)S^{-1}\\big]DA^{-1} \\\\ &= I + B\\,C\\big[I - (C^{-1} + DA^{-1}B)S^{-1}\\big]DA^{-1} \\end{aligned}"}/>
                     <Terms items={[
                         ["-S^{-1} + C - C(DA^{-1}B)S^{-1}", <T en={<>the bracket after factoring; the middle term <InlineMath math={"C"}/> comes from <InlineMath math={"BCDA^{-1}"}/></>}
                                                               ko={<>묶어낸 뒤의 대괄호. 가운데 <InlineMath math={"C"}/>는 <InlineMath math={"BCDA^{-1}"}/>에서 온 것이다</>}/>],
@@ -4204,7 +4204,7 @@ const Chapter2 = () => {
                     ]}/>
                     <T en={<p>Everything the formula needs is a scalar:</p>}
                        ko={<p>이 식이 필요로 하는 것은 전부 스칼라다.</p>}/>
-                    <BlockMath math={"A^{-1}B = \\begin{bmatrix} 1 & 0 & 4 & 0 & 6 \\end{bmatrix}^\\top, \\quad D A^{-1} B = 1 + 0 + 8 + 0 + 18 = 27, \\quad (C^{-1} + D A^{-1} B)^{-1} = \\frac{1}{5 + 27} = \\frac{1}{32}"}/>
+                    <BlockMath math={"\\begin{aligned} A^{-1}B &= \\begin{bmatrix} 1 & 0 & 4 & 0 & 6 \\end{bmatrix}^\\top \\\\ D A^{-1} B &= 1 + 0 + 8 + 0 + 18 = 27 \\\\ (C^{-1} + D A^{-1} B)^{-1} &= \\frac{1}{5 + 27} = \\frac{1}{32} \\end{aligned}"}/>
                     <Terms items={[
                         ["A^{-1}B", <T en={<>a single column, computed by scaling the entries of <InlineMath math={"B"}/> by <InlineMath math={"1, 2, 2, 1, 2"}/></>}
                                       ko={<>열 하나. <InlineMath math={"B"}/>의 성분에 <InlineMath math={"1, 2, 2, 1, 2"}/>를 곱해 얻는다</>}/>],
@@ -4215,7 +4215,7 @@ const Chapter2 = () => {
                     ]}/>
                     <T en={<p>Assembling the correction, which is one outer product,</p>}
                        ko={<p>보정 항은 외적 하나이고, 그것을 조립하면</p>}/>
-                    <BlockMath math={"(A + BCD)^{-1} = \\operatorname{diag}(1, 2, 2, 1, 2) - \\tfrac{1}{32}\\begin{bmatrix} 1 \\\\ 0 \\\\ 4 \\\\ 0 \\\\ 6 \\end{bmatrix}\\begin{bmatrix} 1 & 0 & 4 & 0 & 6 \\end{bmatrix} = \\begin{bmatrix} \\tfrac{31}{32} & 0 & -\\tfrac{1}{8} & 0 & -\\tfrac{3}{16} \\\\ 0 & 2 & 0 & 0 & 0 \\\\ -\\tfrac{1}{8} & 0 & \\tfrac{3}{2} & 0 & -\\tfrac{3}{4} \\\\ 0 & 0 & 0 & 1 & 0 \\\\ -\\tfrac{3}{16} & 0 & -\\tfrac{3}{4} & 0 & \\tfrac{7}{8} \\end{bmatrix}"}/>
+                    <BlockMath math={"\\begin{aligned} (A + BCD)^{-1} &= \\operatorname{diag}(1, 2, 2, 1, 2) - \\tfrac{1}{32}\\begin{bmatrix} 1 \\\\ 0 \\\\ 4 \\\\ 0 \\\\ 6 \\end{bmatrix}\\begin{bmatrix} 1 & 0 & 4 & 0 & 6 \\end{bmatrix} \\\\ &= \\begin{bmatrix} \\tfrac{31}{32} & 0 & -\\tfrac{1}{8} & 0 & -\\tfrac{3}{16} \\\\ 0 & 2 & 0 & 0 & 0 \\\\ -\\tfrac{1}{8} & 0 & \\tfrac{3}{2} & 0 & -\\tfrac{3}{4} \\\\ 0 & 0 & 0 & 1 & 0 \\\\ -\\tfrac{3}{16} & 0 & -\\tfrac{3}{4} & 0 & \\tfrac{7}{8} \\end{bmatrix} \\end{aligned}"}/>
                     <Terms items={[
                         ["\\operatorname{diag}(1,2,2,1,2)", <T en={<><InlineMath math={"A^{-1}"}/>, the part that was free</>}
                                                               ko={<><InlineMath math={"A^{-1}"}/>. 거저 얻은 부분이다</>}/>],
