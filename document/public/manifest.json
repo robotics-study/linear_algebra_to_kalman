@@ -1,0 +1,9 @@
+{
+  "name": "Linear Algebra → Kalman · Study",
+  "short_name": "LA → Kalman",
+  "description": "Interactive study notes for ROB 501 Mathematics for Robotics — proofs, abstract linear algebra, least squares, matrix factorizations, the Kalman filter, real analysis, and optimization.",
+  "start_url": "/linear_algebra_to_kalman",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020"
+}
