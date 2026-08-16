@@ -106,10 +106,14 @@ const data: IChapterData[] = [
     {
         chapter: 7,
         title: {en: "Brief Remarks on Optimization", ko: "최적화 개요"},
+        contents: lazy(() => import("./Chapter7")),
         sections: [
             {en: "Convex Sets and Convex Functions", ko: "볼록 집합과 볼록 함수"},
+            {en: "Remarks on Notation and Abuse of Notation", ko: "argmin 기호와 그 남용"},
             {en: "What Is a Quadratic Program?", ko: "Quadratic Program이란?"},
-            {en: "Linear Programs for the 1-Norm and the Max-Norm", ko: "1-norm과 max-norm을 위한 Linear Program"},
+            {en: "Linear Programs for the 1-Norm and the Max-Norm", ko: "1-norm과 max-norm을 최소화하는 Linear Program"},
+            {en: "Why Robotics", ko: "로봇에서 왜 필요한가"},
+            {en: "References", ko: "References"},
         ],
     },
 ];
