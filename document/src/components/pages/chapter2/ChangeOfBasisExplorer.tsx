@@ -5,7 +5,7 @@ import cn from "../../../libs/cn";
 import {useTr} from "../../../libs/i18n";
 import {useCanvasColors} from "../../../libs/useTheme";
 import {useMeasuredWidth} from "../../../libs/useMeasuredWidth";
-import {DragDot, fmt, makePlane, SpanLine, VecArrow} from "./plane";
+import {DragDot, fmt, makePlane, SpanLine, VecArrow} from "../../2d/plane";
 
 // 벡터는 하나인데 좌표는 기저마다 다르다. 두 기저의 격자를 같은 화면에 겹쳐 두면
 // "표현이 바뀐 것이지 벡터가 바뀐 것이 아니다"가 눈으로 확인된다.

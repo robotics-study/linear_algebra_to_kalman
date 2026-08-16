@@ -5,7 +5,7 @@ import cn from "../../../libs/cn";
 import {useTr} from "../../../libs/i18n";
 import {useCanvasColors} from "../../../libs/useTheme";
 import {useMeasuredWidth} from "../../../libs/useMeasuredWidth";
-import {DragDot, fmt, makePlane, norm, SpanLine, VecArrow} from "./plane";
+import {DragDot, fmt, makePlane, norm, SpanLine, VecArrow} from "../../2d/plane";
 
 // 부분 공간 정의에서 가장 자주 놓치는 조건이 0 ∈ Y 다. 직선을 원점에서 살짝 밀어 보면
 // 합도 스칼라배도 동시에 집합 밖으로 나가는 장면이 한 번에 보인다.

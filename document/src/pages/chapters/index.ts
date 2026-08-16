@@ -42,14 +42,17 @@ const data: IChapterData[] = [
     {
         chapter: 3,
         title: {en: "Inner Product Spaces and Least Squares", ko: "내적 공간과 최소제곱"},
+        contents: lazy(() => import("./Chapter3")),
         sections: [
             {en: "Norms and Normed Spaces", ko: "norm과 normed space"},
             {en: "Inner Product Spaces", ko: "내적 공간"},
             {en: "The Gram-Schmidt Process", ko: "Gram-Schmidt 과정"},
             {en: "Projection Theorem and the Normal Equations", ko: "사영 정리와 normal equation"},
             {en: "Symmetric and Orthogonal Matrices", ko: "대칭 행렬과 직교 행렬"},
-            {en: "Quadratic Forms, Positive Definiteness, and Schur Complements", ko: "이차 형식, 양의 정부호, Schur complement"},
+            {en: "Quadratic Forms, Positive Definiteness, and Schur Complements", ko: "이차 형식, positive definite, Schur complement"},
             {en: "Least Squares Problems", ko: "최소제곱 문제"},
+            {en: "Why Robotics", ko: "로봇에서 왜 필요한가"},
+            {en: "References", ko: "References"},
         ],
     },
     {
