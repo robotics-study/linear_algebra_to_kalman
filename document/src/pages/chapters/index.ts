@@ -1,3 +1,4 @@
+import {lazy} from "react";
 import {IChapterData} from "../../../types/global";
 
 // 챕터 메타데이터는 여기서만 관리한다. 본문 모듈은 lazy import 로 분리해 홈/목록 화면에서는
@@ -9,6 +10,7 @@ const data: IChapterData[] = [
     {
         chapter: 1,
         title: {en: "Introduction to Mathematical Arguments", ko: "수학적 논증 입문"},
+        contents: lazy(() => import("./Chapter1")),
         sections: [
             {en: "Mathematical Notation", ko: "수학 기호"},
             {en: "Vocabulary", ko: "용어"},
@@ -16,6 +18,8 @@ const data: IChapterData[] = [
             {en: "Truth Tables", ko: "진리표"},
             {en: "Negating Logical Statements", ko: "논리 명제의 부정"},
             {en: "Key Properties of Real Numbers", ko: "실수의 핵심 성질"},
+            {en: "Why Robotics", ko: "로봇에서 왜 필요한가"},
+            {en: "References", ko: "References"},
         ],
     },
     {
@@ -24,7 +28,7 @@ const data: IChapterData[] = [
         sections: [
             {en: "Fields and Vector Spaces", ko: "체와 벡터 공간"},
             {en: "Subspaces", ko: "부분 공간"},
-            {en: "Linear Combinations and Linear Independence", ko: "일차 결합과 일차 독립"},
+            {en: "Linear Combinations and Linear Independence", ko: "선형 결합과 선형 독립"},
             {en: "Basis Vectors and Dimension", ko: "기저와 차원"},
             {en: "Representations of Vectors and the Change of Basis Matrix", ko: "벡터의 표현과 기저 변환 행렬"},
             {en: "Linear Operators and Matrix Representations", ko: "선형 연산자와 행렬 표현"},
@@ -39,7 +43,7 @@ const data: IChapterData[] = [
             {en: "Norms and Normed Spaces", ko: "norm과 normed space"},
             {en: "Inner Product Spaces", ko: "내적 공간"},
             {en: "The Gram-Schmidt Process", ko: "Gram-Schmidt 과정"},
-            {en: "Projection Theorem and the Normal Equations", ko: "사영 정리와 정규 방정식"},
+            {en: "Projection Theorem and the Normal Equations", ko: "사영 정리와 normal equation"},
             {en: "Symmetric and Orthogonal Matrices", ko: "대칭 행렬과 직교 행렬"},
             {en: "Quadratic Forms, Positive Definiteness, and Schur Complements", ko: "이차 형식, 양의 정부호, Schur complement"},
             {en: "Least Squares Problems", ko: "최소제곱 문제"},
@@ -51,7 +55,7 @@ const data: IChapterData[] = [
         sections: [
             {en: "QR Factorization", ko: "QR 분해"},
             {en: "Singular Value Decomposition", ko: "특이값 분해(SVD)"},
-            {en: "Numerical Linear Independence", ko: "수치적 일차 독립"},
+            {en: "Numerical Linear Independence", ko: "수치적 선형 독립"},
             {en: "LU Factorization", ko: "LU 분해"},
             {en: "Cholesky Factorization", ko: "Cholesky 분해"},
         ],
@@ -79,7 +83,7 @@ const data: IChapterData[] = [
             {en: "The Newton-Raphson Algorithm", ko: "Newton-Raphson 알고리즘"},
             {en: "Sequences", ko: "수열"},
             {en: "Cauchy Sequences and Completeness", ko: "Cauchy 수열과 완비성"},
-            {en: "The Contraction Mapping Theorem", ko: "축약 사상 정리"},
+            {en: "The Contraction Mapping Theorem", ko: "Contraction Mapping 정리"},
             {en: "Continuous Functions", ko: "연속 함수"},
             {en: "Compact Sets and the Existence of Extrema", ko: "컴팩트 집합과 극값의 존재"},
         ],

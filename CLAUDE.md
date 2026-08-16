@@ -56,7 +56,9 @@ animated figure, and abstract objects (a subspace, a projection, a covariance el
 6. **Why Robotics** — where this shows up in a real robot (estimation, calibration, control).
    This is what makes the math stick; do not skip it.
 7. **Implementation** — `CodeTabs` with python / matlab, embedded from `sample_code/` via
-   vite `?raw` (no copy-pasted duplicates).
+   vite `?raw` (no copy-pasted duplicates). Include it when the chapter has something worth
+   running; a chapter that is purely about proof technique does not get a token code block just
+   to fill the slot.
 8. **References**
 
 The `sections[]` array in `pages/chapters/index.ts` lists the same headings in the same order.
@@ -89,9 +91,16 @@ The `sections[]` array in `pages/chapters/index.ts` lists the same headings in t
   sentences, use a colon for elaborations, or parentheses for short glosses. (Em dashes as
   structural separators in card/list layouts, e.g. `Ch.N · Title — blurb`, are fine, as are
   hyphens/en-dashes inside names like Gram–Schmidt.)
-- **Korean prose keeps math/industry terms in English when the English is clearer** (e.g. norm,
-  inner product, null space, rank, positive definite — not 노름/내적곱/영공간). Settled Korean
-  terms (행렬, 벡터 공간, 고윳값, 수렴, 볼록 — and 내적, 사영, 기저, 차원) stay Korean.
+- **Korean prose uses the term a Korean grad student would actually say.** That is usually the
+  settled Korean word (행렬, 벡터 공간, 고윳값, 수렴, 볼록, 내적, 사영, 기저, 차원, 유계, 완비성,
+  대우, 귀류법, 귀납법, 반례, 진리표), but where the field says it in English, write English:
+  quantifier, implication, norm, dense, rank, upper bound / least upper bound, normal equation,
+  positive definite, null space, contraction mapping. Dictionary-literal coinages are a defect:
+  not 양화사/함의/논리곱/조밀/상계/최소상계/노름/영공간.
+- **Particles follow the Korean pronunciation of the preceding English token**, and a copula is
+  not a subject particle: `implication은`, `implication이` (받침 있음) but `quantifier는`,
+  `upper bound가`; the copula stays `upper bound이고 / 이며`, never `bound가고`. Never run a
+  blind find-and-replace over Korean prose without rechecking every particle it touched.
 - **직역 금지** — Korean is written fresh, not translated from the English sentence. Translationese
   ("~에 대한 것이다", "우리는 ~할 수 있다") is a defect.
 - **조사는 선행 영어 토큰에 붙인다**: "norm 을" ❌ → "norm을" ✅. Same after `<InlineMath/>`.
