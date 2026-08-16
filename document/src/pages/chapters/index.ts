@@ -58,12 +58,15 @@ const data: IChapterData[] = [
     {
         chapter: 4,
         title: {en: "Three Useful Matrix Factorizations", ko: "유용한 세 가지 행렬 분해"},
+        contents: lazy(() => import("./Chapter4")),
         sections: [
             {en: "QR Factorization", ko: "QR 분해"},
             {en: "Singular Value Decomposition", ko: "특이값 분해(SVD)"},
             {en: "Numerical Linear Independence", ko: "수치적 선형 독립"},
             {en: "LU Factorization", ko: "LU 분해"},
             {en: "Cholesky Factorization", ko: "Cholesky 분해"},
+            {en: "Why Robotics", ko: "로봇에서 왜 필요한가"},
+            {en: "References", ko: "References"},
         ],
     },
     {
