@@ -1615,7 +1615,7 @@ const Chapter7 = () => {
                             <InlineMath math={"x_0 \\in S"}/>을 아무거나 잡고 문제를 다음으로 줄인다.
                         </p>}
                     />
-                    <BlockMath math={"S_0 := S \\cap \\{x : f(x) \\le f(x_0)\\}, \\qquad \\|x\\| \\le R := \\frac{\\|q\\| + \\sqrt{\\|q\\|^2 + 2\\lambda_{\\min}(Q) f(x_0)}}{\\lambda_{\\min}(Q)} \\ \\ \\text{on } S_0."}/>
+                    <BlockMath math={"\\begin{aligned} S_0 &:= S \\cap \\{x : f(x) \\le f(x_0)\\}, \\\\ R &:= \\frac{\\|q\\| + \\sqrt{\\|q\\|^2 + 2\\lambda_{\\min}(Q)\\, f(x_0)}}{\\lambda_{\\min}(Q)}, \\\\ &\\phantom{:}\\ \\ \\|x\\| \\le R \\ \\text{ for every } x \\in S_0. \\end{aligned}"}/>
                     <Terms items={[
                         ["S_0", <T en={<>nonempty, since <InlineMath math={"x_0 \\in S_0"}/>. Closed, as the intersection of the closed <InlineMath math={"S"}/> with the sublevel set of a continuous function</>}
                                    ko={<><InlineMath math={"x_0 \\in S_0"}/>이므로 비어 있지 않다. 닫힌 <InlineMath math={"S"}/>과 연속 함수의 하위 준위 집합의 교집합이라 닫혀 있다</>}/>],
@@ -2128,7 +2128,7 @@ const Chapter7 = () => {
                             <InlineMath math={"d^* := \\min_x \\|b - Ax\\|_1"}/>이라 하자.
                         </p>}
                     />
-                    <BlockMath math={"\\begin{aligned} p^* \\ge d^*: \\quad & \\text{any feasible } (x, s) \\text{ has } \\textstyle\\sum_i s_i \\ \\ge\\ \\sum_i |b - Ax|_i \\ \\ge\\ d^*, \\\\ p^* \\le d^*: \\quad & \\text{for any } x,\\ \\text{ the pair } (x, s) \\text{ with } s_i := |b - Ax|_i \\text{ is feasible, with cost } \\|b - Ax\\|_1. \\end{aligned}"}/>
+                    <BlockMath math={"\\begin{aligned} p^* \\ge d^*: \\ \\ & \\text{every feasible } (x, s) \\text{ has} \\\\ & \\textstyle\\sum_i s_i \\ \\ge\\ \\sum_i |b - Ax|_i \\ \\ge\\ d^*, \\\\[4pt] p^* \\le d^*: \\ \\ & \\text{for each } x,\\ \\text{the pair } (x, s),\\ s_i := |b - Ax|_i, \\\\ & \\text{is feasible and costs } \\|b - Ax\\|_1. \\end{aligned}"}/>
                     <Terms items={[
                         ["p^* \\ge d^*", <T en={<>uses only the constraint <InlineMath math={"|b-Ax|_i \\le s_i"}/> summed over <InlineMath math={"i"}/>, then the definition of <InlineMath math={"d^*"}/> as a minimum over <InlineMath math={"x"}/></>}
                                             ko={<>제약 <InlineMath math={"|b-Ax|_i \\le s_i"}/>을 <InlineMath math={"i"}/>에 대해 더한 것과, <InlineMath math={"d^*"}/>이 <InlineMath math={"x"}/>에 대한 최솟값이라는 정의만 쓴다</>}/>],
