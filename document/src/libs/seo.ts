@@ -1,0 +1,180 @@
+// SPA 라 챕터 전환은 페이지 리로드 없이 일어난다. 크롤러/링크 프리뷰가 현재 뷰를 반영하도록
+// document.title, description, Open Graph, canonical, hreflang, JSON-LD 를 클라이언트에서
+// 갱신한다. index.html 에 정적으로 심어 둔 태그를 찾아 값만 바꾸고, 없으면 만든다.
+// 설명문은 마케팅 문구가 아니라 학습 내용(주제·개념) 중심으로 쓴다.
+
+import {Lang, pick} from "./i18n";
+import {IChapterData} from "../../types/global";
+import {CHAPTER_BLURBS} from "../pages/chapters/roadmap";
+
+const ORIGIN = "https://robotics-study.github.io";
+const BASE_PATH = "/linear_algebra_to_kalman/";
+
+const SITE: Record<Lang, string> = {
+    en: "Linear Algebra → Kalman · Study",
+    ko: "선형대수에서 칼만필터까지 · 스터디",
+}
+
+// 원 교재 — 페이지 구조화 데이터의 isBasedOn 에 공통으로 붙는다.
+const SOURCE_BOOK = {
+    "@type": "Book",
+    name: "ROB 501: Mathematics for Robotics",
+    author: "Jessy W. Grizzle",
+    publisher: "University of Michigan",
+} as const
+
+function upsertMeta(attr: "name" | "property", key: string, content: string) {
+    let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`)
+    if (!el) {
+        el = document.createElement("meta")
+        el.setAttribute(attr, key)
+        document.head.appendChild(el)
+    }
+    el.setAttribute("content", content)
+}
+
+function upsertLink(rel: string, href: string, hreflang?: string) {
+    const selector = hreflang
+        ? `link[rel="${rel}"][hreflang="${hreflang}"]`
+        : `link[rel="${rel}"]`
+    let el = document.head.querySelector<HTMLLinkElement>(selector)
+    if (!el) {
+        el = document.createElement("link")
+        el.rel = rel
+        if (hreflang) el.hreflang = hreflang
+        document.head.appendChild(el)
+    }
+    el.href = href
+}
+
+function upsertJsonLd(id: string, data: object) {
+    let el = document.head.querySelector<HTMLScriptElement>(`script#${id}`)
+    if (!el) {
+        el = document.createElement("script")
+        el.id = id
+        el.type = "application/ld+json"
+        document.head.appendChild(el)
+    }
+    el.textContent = JSON.stringify(data)
+}
+
+function clamp(text: string, max = 155): string {
+    return text.length <= max ? text : text.slice(0, max - 1).trimEnd() + "…"
+}
+
+// 해시·잡다한 파라미터를 뺀 정규화 URL. 챕터는 /chapter/N/ 경로, 언어 변형은 ?lang=ko.
+export function pageUrl(lang: Lang, chapter?: number): string {
+    const path = chapter !== undefined ? `chapter/${chapter}/` : ""
+    const qs = lang === "ko" ? "?lang=ko" : ""
+    return `${ORIGIN}${BASE_PATH}${path}${qs}`
+}
+
+declare global {
+    interface Window {
+        gtag?: (...args: unknown[]) => void
+    }
+}
+
+// SPA 라우트 변경마다 GA4 page_view 를 직접 보낸다 (index.html 은 send_page_view: false).
+// 로컬 개발 트래픽은 집계를 오염시키므로 배포 호스트에서만 보낸다.
+function trackPageView(title: string) {
+    if (!window.location.hostname.endsWith("github.io")) return
+    window.gtag?.("event", "page_view", {
+        page_title: title,
+        page_location: window.location.href,
+        page_path: window.location.pathname + window.location.search,
+    })
+}
+
+export interface PageMeta {
+    title: string
+    description: string
+    lang: Lang
+    chapter?: IChapterData
+}
+
+export function applyPageMeta({title, description, lang, chapter}: PageMeta) {
+    const desc = clamp(description)
+    const canonical = pageUrl(lang, chapter?.chapter)
+    document.title = title
+    document.documentElement.lang = lang
+    upsertMeta("name", "description", desc)
+    upsertMeta("property", "og:title", title)
+    upsertMeta("property", "og:description", desc)
+    upsertMeta("property", "og:url", canonical)
+    upsertMeta("property", "og:locale", lang === "ko" ? "ko_KR" : "en_US")
+    upsertMeta("name", "twitter:title", title)
+    upsertMeta("name", "twitter:description", desc)
+    upsertLink("canonical", canonical)
+    trackPageView(title)
+    // 언어별 대체 URL: 같은 챕터의 en/ko 쌍.
+    upsertLink("alternate", pageUrl("en", chapter?.chapter), "en")
+    upsertLink("alternate", pageUrl("ko", chapter?.chapter), "ko")
+    upsertLink("alternate", pageUrl("en", chapter?.chapter), "x-default")
+    // 페이지 구조화 데이터.
+    if (chapter) {
+        upsertJsonLd("page-jsonld", {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            headline: title,
+            description: desc,
+            inLanguage: lang,
+            url: canonical,
+            isPartOf: {
+                "@type": "WebSite",
+                name: SITE[lang],
+                url: pageUrl(lang),
+            },
+            about: (chapter.sections ?? []).map((s) => pick(lang, s)),
+            isBasedOn: SOURCE_BOOK,
+        })
+    } else {
+        upsertJsonLd("page-jsonld", {
+            "@context": "https://schema.org",
+            "@type": "LearningResource",
+            name: SITE[lang],
+            description: desc,
+            url: canonical,
+            inLanguage: ["en", "ko"],
+            learningResourceType: "Study notes",
+            about: [
+                "Mathematical Proof", "Linear Algebra", "Vector Space", "Eigenvalue",
+                "Inner Product Space", "Least Squares", "QR Factorization",
+                "Singular Value Decomposition", "LU Factorization", "Cholesky Factorization",
+                "Probability", "Estimation", "Kalman Filter", "Real Analysis",
+                "Contraction Mapping", "Compactness", "Convex Optimization",
+            ],
+            isBasedOn: SOURCE_BOOK,
+        })
+    }
+}
+
+const HOME_DESC: Record<Lang, string> = {
+    en:
+        "Study notes on Mathematics for Robotics (ROB 501): proof techniques, abstract linear " +
+        "algebra, inner product spaces and least squares, matrix factorizations, the Kalman " +
+        "filter, real analysis, and optimization.",
+    ko:
+        "Mathematics for Robotics (ROB 501) 학습 노트: 증명 기법, 추상 선형대수, 내적 공간과 " +
+        "최소제곱, 행렬 분해, 칼만 필터, 실해석, 최적화.",
+}
+
+// 챕터 → 페이지 메타. 설명은 챕터 한 줄 소개(내용 요약) + 주요 절 제목으로 만든다.
+export function chapterMeta(lang: Lang, chapter?: IChapterData): PageMeta {
+    if (!chapter) {
+        return {title: SITE[lang], description: HOME_DESC[lang], lang}
+    }
+    const title = pick(lang, chapter.title)
+    const blurb = CHAPTER_BLURBS.find((b) => b.n === chapter.chapter)?.blurb
+    const topics = (chapter.sections ?? []).map((s) => pick(lang, s)).join(", ")
+    const intro = blurb ? pick(lang, blurb) : ""
+    const body = lang === "ko"
+        ? `${intro} ${topics ? `주요 내용: ${topics}.` : ""}`.trim()
+        : `${intro} ${topics ? `Topics: ${topics}.` : ""}`.trim()
+    return {
+        title: `${title} · Ch.${chapter.chapter} · ${SITE[lang]}`,
+        description: body,
+        lang,
+        chapter,
+    }
+}
