@@ -72,6 +72,7 @@ const data: IChapterData[] = [
     {
         chapter: 5,
         title: {en: "Probability, Estimation, and the Kalman Filter", ko: "확률, 추정, 칼만 필터"},
+        contents: lazy(() => import("./Chapter5")),
         sections: [
             {en: "Densities and Random Vectors", ko: "밀도 함수와 확률 벡터"},
             {en: "Best Linear Unbiased Estimator (BLUE)", ko: "Best Linear Unbiased Estimator (BLUE)"},
@@ -82,6 +83,8 @@ const data: IChapterData[] = [
             {en: "The Discrete-time Kalman Filter", ko: "이산시간 칼만 필터"},
             {en: "Extended Kalman Filter", ko: "확장 칼만 필터(EKF)"},
             {en: "Luenberger Observer", ko: "Luenberger 관측기"},
+            {en: "Why Robotics", ko: "로봇에서 왜 필요한가"},
+            {en: "References", ko: "References"},
         ],
     },
     {
