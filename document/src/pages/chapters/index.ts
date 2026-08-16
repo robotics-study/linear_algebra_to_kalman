@@ -90,6 +90,7 @@ const data: IChapterData[] = [
     {
         chapter: 6,
         title: {en: "Real Analysis: Limits and Extrema", ko: "실해석: 극한과 극값"},
+        contents: lazy(() => import("./Chapter6")),
         sections: [
             {en: "Open and Closed Sets in Normed Spaces", ko: "normed space의 열린 집합과 닫힌 집합"},
             {en: "The Newton-Raphson Algorithm", ko: "Newton-Raphson 알고리즘"},
@@ -98,6 +99,8 @@ const data: IChapterData[] = [
             {en: "The Contraction Mapping Theorem", ko: "Contraction Mapping 정리"},
             {en: "Continuous Functions", ko: "연속 함수"},
             {en: "Compact Sets and the Existence of Extrema", ko: "컴팩트 집합과 극값의 존재"},
+            {en: "Why Robotics", ko: "로봇에서 왜 필요한가"},
+            {en: "References", ko: "References"},
         ],
     },
     {
