@@ -10,7 +10,7 @@ import {DragDot, fmt, makePlane, SpanLine, VecArrow} from "./plane";
 // 벡터는 하나인데 좌표는 기저마다 다르다. 두 기저의 격자를 같은 화면에 겹쳐 두면
 // "표현이 바뀐 것이지 벡터가 바뀐 것이 아니다"가 눈으로 확인된다.
 const WARN = "#f59e0b";
-const SINGULAR = 0.15;   // |det P| 가 이보다 작으면 기저로 보지 않는다
+const SINGULAR = 0.15;   // |det P̄| 가 이보다 작으면 기저로 보지 않는다
 const GRID = 5;
 
 interface Vec {
@@ -51,7 +51,7 @@ const ChangeOfBasisExplorer = ({width: fixedWidth, height = 340}: Props) => {
 
     const det = b1.x * b2.y - b2.x * b1.y;
     const singular = Math.abs(det) < SINGULAR;
-    // P 의 열은 [ū_i]_u 이고 [x]_u = P[x]_ū 이므로, 반대 방향 좌표는 P 의 역행렬로 얻는다.
+    // P̄ 의 열은 [ū_i]_u 이고 [x]_u = P̄[x]_ū 이므로, 새 기저 좌표는 P = P̄⁻¹ 로 얻는다.
     const beta1 = singular ? 0 : (b2.y * x.x - b2.x * x.y) / det;
     const beta2 = singular ? 0 : (b1.x * x.y - b1.y * x.x) / det;
     const comp1 = {x: b1.x * beta1, y: b1.y * beta1};
@@ -65,8 +65,8 @@ const ChangeOfBasisExplorer = ({width: fixedWidth, height = 340}: Props) => {
     const xp = plane.px(x.x, x.y);
 
     const caption = singular
-        ? t("ū¹ and ū² have gone parallel. P is singular, so this pair is not a basis and x has no representation in it.",
-            "ū¹과 ū²가 평행해졌다. P가 비가역이므로 이 쌍은 basis가 아니고 x는 그 안에서 표현되지 않는다.")
+        ? t("ū¹ and ū² have gone parallel. P̄ is singular, so this pair is not a basis and x has no representation in it.",
+            "ū¹과 ū²가 평행해졌다. P̄가 비가역이므로 이 쌍은 basis가 아니고 x는 그 안에서 표현되지 않는다.")
         : t("Drag x and the two readouts change together. The arrow never moves when you drag ū: only its address does.",
             "x를 끌면 두 좌표가 함께 바뀐다. ū를 끌 때 화살표 자체는 그대로 있고 주소만 달라진다.");
 
@@ -134,12 +134,12 @@ const ChangeOfBasisExplorer = ({width: fixedWidth, height = 340}: Props) => {
                 </span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-2">
-                <Mat2 label="P =" color={colors.accent2} m={[[b1.x, b2.x], [b1.y, b2.y]]}/>
+                <Mat2 label="P̄ =" color={colors.accent2} m={[[b1.x, b2.x], [b1.y, b2.y]]}/>
                 {!singular && (
-                    <Mat2 label="P̄ = P⁻¹ =" color={colors.accent}
+                    <Mat2 label="P = P̄⁻¹ =" color={colors.accent}
                           m={[[b2.y / det, -b2.x / det], [-b1.y / det, b1.x / det]]}/>
                 )}
-                <span className="font-mono text-xs text-muted">det P = {fmt(det)}</span>
+                <span className="font-mono text-xs text-muted">det P̄ = {fmt(det)}</span>
             </div>
             <p className="mt-2 text-sm text-muted text-center px-2">{caption}</p>
         </div>

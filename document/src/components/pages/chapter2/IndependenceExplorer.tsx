@@ -147,8 +147,8 @@ const IndependenceExplorer = ({width: fixedWidth, height = 330}: Props) => {
                 {`det[v¹ v²] = ${fmt(det)} · rank = ${rank} · ${spanText}`}
             </p>
             <p className="mt-1 text-sm text-center font-mono" style={{color: dependent ? WARN : colors.accent}}>
-                {certificate() ?? t("only α¹ = α² = 0 gives α¹v¹ + α²v² = 0",
-                    "α¹v¹ + α²v² = 0을 만드는 것은 α¹ = α² = 0뿐이다")}
+                {certificate() ?? t("only α₁ = α₂ = 0 gives α₁v¹ + α₂v² = 0",
+                    "α₁v¹ + α₂v² = 0을 만드는 것은 α₁ = α₂ = 0뿐이다")}
             </p>
             <p className="mt-1 text-sm text-muted text-center px-2">{caption}</p>
         </div>

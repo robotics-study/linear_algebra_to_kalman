@@ -113,8 +113,8 @@ const EigenvectorHunt = ({width: fixedWidth, height = 340}: Props) => {
             : repeated
                 ? t("The two eigenvalues have merged and only one eigen-direction survives, so there is no basis of eigenvectors and A is not similar to a diagonal matrix.",
                     "고윳값 둘이 붙어 버려 고유 방향이 하나만 남는다. 고유벡터로 basis를 만들 수 없으므로 A는 대각 행렬과 닮지 않았다.")
-                : t("Two directions survive the sweep. Take them as a basis and A turns into diag(λ¹, λ²): that is what diagonalization buys you.",
-                    "한 바퀴를 돌면 두 방향이 살아남는다. 그 둘을 basis로 잡으면 A는 diag(λ¹, λ²)가 된다. 대각화가 주는 것이 이것이다.");
+                : t("Two directions survive the sweep. Take them as a basis and A turns into diag(λ₁, λ₂): that is what diagonalization buys you.",
+                    "한 바퀴를 돌면 두 방향이 살아남는다. 그 둘을 basis로 잡으면 A는 diag(λ₁, λ₂)가 된다. 대각화가 주는 것이 이것이다.");
 
     return (
         <div ref={ref} className="w-full">
@@ -204,7 +204,7 @@ const EigenvectorHunt = ({width: fixedWidth, height = 340}: Props) => {
             </p>
             <p className="mt-1 text-xs text-center font-mono text-muted">
                 {realEvals
-                    ? `λ¹ = ${fmt(l1)}, λ² = ${fmt(l2)} · ${fullSet
+                    ? `λ₁ = ${fmt(l1)}, λ₂ = ${fmt(l2)} · ${fullSet
                         ? t("full set of e-vectors", "고유벡터가 basis를 이룬다")
                         : t("no full set of e-vectors", "고유벡터가 basis를 이루지 못한다")}`
                     : `λ = ${fmt(tr / 2)} ± ${fmt(Math.sqrt(-disc) / 2)}j`}
