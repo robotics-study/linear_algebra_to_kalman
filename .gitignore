@@ -1,0 +1,14 @@
+.idea
+.vscode
+**/node_modules
+**/build
+**/dist
+**/__pycache__
+
+# Playwright MCP output + root-level verification screenshots
+.playwright-mcp
+/*.png
+
+# 원 교재 PDF 는 재배포하지 않는다 (© Jessy Grizzle, University of Michigan).
+# 집필용으로 로컬에 두는 것은 자유 — 저장소에는 원문 링크만 남긴다.
+*.pdf
