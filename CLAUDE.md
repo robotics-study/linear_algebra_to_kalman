@@ -7,8 +7,12 @@ project structure.
 
 Interactive study notes for Jessy W. Grizzle's *ROB 501: Mathematics for Robotics*. Two parts:
 
-- `document/` — the deployed web app (React 18 + Vite 6 + TypeScript). All app work happens here.
-- `sample_code/` — standalone Python / MATLAB reference implementations, grouped by chapter.
+Everything lives in `document/`, the deployed web app (React 18 + Vite 6 + TypeScript).
+
+The algorithms run in the browser rather than sitting in a separate reference directory: the
+figures compute their own SVDs, filter steps, and QP/LP solutions. Shared numerical routines live
+beside the figures that use them (`chapter4/svd.ts`, `chapter5/gauss.ts`, `chapter6/analysis.ts`,
+`chapter7/optimize.ts`).
 
 Chapters are pages at path routes: `…/chapter/<N>/`. Korean adds `?lang=ko`.
 
@@ -79,11 +83,11 @@ animated figure, and abstract objects (a subspace, a projection, a covariance el
 5. **Worked Example**
 6. **Why Robotics** — where this shows up in a real robot (estimation, calibration, control).
    This is what makes the math stick; do not skip it.
-7. **Implementation** — `CodeTabs` with python / matlab, embedded from `sample_code/` via
-   vite `?raw` (no copy-pasted duplicates). Include it when the chapter has something worth
-   running; a chapter that is purely about proof technique does not get a token code block just
-   to fill the slot.
-8. **References**
+7. **References**
+
+None of the seven chapters warranted a separate code section: every computational idea is already
+live in a figure the reader can drag. If a future chapter genuinely needs listed source, add it
+then rather than reserving a slot for it now.
 
 The `sections[]` array in `pages/chapters/index.ts` lists the same headings in the same order.
 
