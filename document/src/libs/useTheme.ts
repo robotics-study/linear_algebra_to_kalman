@@ -34,6 +34,8 @@ export interface CanvasColors {
     surface: string;
     bg: string;
     accent: string;
+    // 한 그림에 두 계열을 동시에 그릴 때 쓰는 보조 강조색 (두 기저, 벡터와 그 상 등).
+    accent2: string;
 }
 
 // 캔버스에서 쓸 실제 색을 CSS 변수(단일 진실원본)에서 읽어온다. 테마가 바뀌면 재계산된다.
@@ -49,6 +51,7 @@ export function useCanvasColors(): CanvasColors {
             surface: read("--surface", "#f8fafc"),
             bg: read("--bg", "#ffffff"),
             accent: read("--accent", "#6366f1"),
+            accent2: read("--accent-2", "#06b6d4"),
         };
     }, [theme]);
 }
