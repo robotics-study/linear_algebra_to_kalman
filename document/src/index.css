@@ -574,9 +574,24 @@
     margin: .9em 0;
 }
 
+/* tailwind preflight 가 list-style 을 없애 버려서 본문 목록에 마커가 사라진다.
+   왼쪽 패딩은 원래 마커 자리를 비워 두려던 것이므로 마커를 되살린다.
+   번호는 특히 중요하다 — 본문에서 "axiom 8" 처럼 항목 번호로 되짚기 때문이다. */
 .content-inner ul,
 .content-inner ol {
     padding-left: 1.4em;
+}
+
+.content-inner ul {
+    list-style: disc;
+}
+
+.content-inner ol {
+    list-style: decimal;
+}
+
+.content-inner li::marker {
+    color: var(--muted);
 }
 
 .content-inner li {
