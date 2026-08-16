@@ -103,12 +103,19 @@ const Chapter1 = () => {
                 </tr>
                 <tr>
                     <td><InlineMath math={"\\mathbb{Z}"}/></td>
-                    <td>{t("integers …, −2, −1, 0, 1, 2, …", "정수 …, −2, −1, 0, 1, 2, …")}</td>
+                    <td>
+                        <T en={<>integers <InlineMath math={"\\ldots, -2, -1, 0, 1, 2, \\ldots"}/></>}
+                           ko={<>정수 <InlineMath math={"\\ldots, -2, -1, 0, 1, 2, \\ldots"}/></>}/>
+                    </td>
                 </tr>
                 <tr>
                     <td><InlineMath math={"\\mathbb{Q}"}/></td>
-                    <td>{t("rationals m/q with m, q integers, q ≠ 0, in lowest terms",
-                        "유리수 m/q. m, q는 정수이고 q ≠ 0이며 기약분수로 적는다")}</td>
+                    <td>
+                        <T en={<>rationals <InlineMath math={"m/q"}/> with <InlineMath math={"m, q"}/> integers,{" "}
+                            <InlineMath math={"q \\neq 0"}/>, in lowest terms</>}
+                           ko={<>유리수 <InlineMath math={"m/q"}/>. <InlineMath math={"m, q"}/>는 정수이고{" "}
+                               <InlineMath math={"q \\neq 0"}/>이며 기약분수로 적는다</>}/>
+                    </td>
                 </tr>
                 <tr>
                     <td><InlineMath math={"\\mathbb{R}"}/></td>
@@ -116,8 +123,12 @@ const Chapter1 = () => {
                 </tr>
                 <tr>
                     <td><InlineMath math={"\\mathbb{C}"}/></td>
-                    <td>{t("complex numbers α + jβ with α, β real and j² = −1",
-                        "복소수 α + jβ. α, β는 실수이고 j² = −1")}</td>
+                    <td>
+                        <T en={<>complex numbers <InlineMath math={"\\alpha + j\\beta"}/> with{" "}
+                            <InlineMath math={"\\alpha, \\beta"}/> real and <InlineMath math={"j^2 = -1"}/></>}
+                           ko={<>복소수 <InlineMath math={"\\alpha + j\\beta"}/>.{" "}
+                               <InlineMath math={"\\alpha, \\beta"}/>는 실수이고 <InlineMath math={"j^2 = -1"}/></>}/>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -405,8 +416,9 @@ const Chapter1 = () => {
                     나면 나머지는 대개 직접 증명처럼 흘러간다. 그 십 초는 쓸 값어치가 있다.
                 </p>}
             />
-            <Example n="1.4" title={t("If n² is even, then n is even",
-                "n²이 짝수이면 n도 짝수다")}>
+            <Example n="1.4" title={
+                <T en={<>If <InlineMath math={"n^2"}/> is even, then <InlineMath math={"n"}/> is even</>}
+                   ko={<><InlineMath math={"n^2"}/>이 짝수이면 <InlineMath math={"n"}/>도 짝수다</>}/>}>
                 <Proof>
                     <T
                         en={<ul>
@@ -508,8 +520,11 @@ const Chapter1 = () => {
                 modal={<InductionDominoes height={300}/>}>
                 <InductionDominoes/>
             </CanvasFigure>
-            <Example n="1.6" title={t("For all n ≥ 1, 1 + 3 + 5 + ⋯ + (2n − 1) = n²",
-                "모든 n ≥ 1에 대해 1 + 3 + 5 + ⋯ + (2n − 1) = n²")}>
+            <Example n="1.6" title={
+                <T en={<>For all <InlineMath math={"n \\ge 1"}/>,{" "}
+                    <InlineMath math={"1 + 3 + 5 + \\cdots + (2n - 1) = n^2"}/></>}
+                   ko={<>모든 <InlineMath math={"n \\ge 1"}/>에 대해{" "}
+                       <InlineMath math={"1 + 3 + 5 + \\cdots + (2n - 1) = n^2"}/></>}/>}>
                 <Proof>
                     <T
                         en={<p><strong>Step 0.</strong> Write down the statement:{" "}
@@ -639,8 +654,10 @@ const Chapter1 = () => {
                     </p>}
                 />
             </Definition>
-            <Example n="1.11" title={t("Fundamental Theorem of Arithmetic: every n ≥ 2 is a product of primes",
-                "산술의 기본 정리: 모든 n ≥ 2는 소수들의 곱이다")}>
+            <Example n="1.11" title={
+                <T en={<>Fundamental Theorem of Arithmetic: every <InlineMath math={"n \\ge 2"}/> is a
+                    product of primes</>}
+                   ko={<>산술의 기본 정리: 모든 <InlineMath math={"n \\ge 2"}/>는 소수들의 곱이다</>}/>}>
                 <Proof>
                     <T
                         en={<p><strong>Step 0.</strong> For <InlineMath math={"k \\ge 2"}/>, let{" "}
@@ -732,7 +749,9 @@ const Chapter1 = () => {
                         ko={<>중간에 나온 아무 명제. 참이면서 동시에 거짓임을 보인 것</>}/>],
                 ["T, F", <T en={<>the truth values true and false</>} ko={<>진리값 참과 거짓</>}/>],
             ]}/>
-            <Example n="1.13" title={t("√2 is irrational", "√2는 무리수다")}>
+            <Example n="1.13" title={
+                <T en={<><InlineMath math={"\\sqrt{2}"}/> is irrational</>}
+                   ko={<><InlineMath math={"\\sqrt{2}"}/>는 무리수다</>}/>}>
                 <Proof>
                     <T
                         en={<p>

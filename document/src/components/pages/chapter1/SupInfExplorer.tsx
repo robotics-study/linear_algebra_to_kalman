@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Circle, Layer, Line, Stage, Text} from "react-konva";
 import cn from "../../../libs/cn";
 import {useTr} from "../../../libs/i18n";
+import {InlineMath} from "../../math/Tex";
 import {useCanvasColors} from "../../../libs/useTheme";
 import {useMeasuredWidth} from "../../../libs/useMeasuredWidth";
 
@@ -39,7 +40,9 @@ const SupInfExplorer = ({width: fixedWidth, height = 170}: Props) => {
     const bracket = (closed: boolean, side: "left" | "right") =>
         closed ? (side === "left" ? "[" : "]") : (side === "left" ? "(" : ")");
 
-    const setLabel = `A = { x ∈ ℝ | ${fmt(a)} ${aClosed ? "≤" : "<"} x ${bClosed ? "≤" : "<"} ${fmt(b)} }`;
+    // 집합 표기는 KaTeX 로 조판한다. 유니코드로 적으면 본문 수식과 서체가 어긋난다.
+    const setLabel = `A = \\{\\, x \\in \\mathbb{R} \\mid ${fmt(a)} ${aClosed ? "\\le" : "<"} x ` +
+        `${bClosed ? "\\le" : "<"} ${fmt(b)} \\,\\}`;
     const interval = `${bracket(aClosed, "left")}${fmt(a)}, ${fmt(b)}${bracket(bClosed, "right")}`;
 
     const preset = (nextA: number, nextB: number, ac: boolean, bc: boolean) => () => {
@@ -137,7 +140,7 @@ const SupInfExplorer = ({width: fixedWidth, height = 170}: Props) => {
             </div>
 
             <p className="mt-2 text-sm text-center font-mono">{interval}</p>
-            <p className="mt-1 text-xs text-muted text-center px-2">{setLabel}</p>
+            <p className="mt-1 text-xs text-muted text-center px-2"><InlineMath math={setLabel}/></p>
             <p className="mt-2 text-sm text-muted text-center px-2">
                 {aClosed && bClosed
                     ? t("Both endpoints belong to A, so the minimum and the maximum exist and coincide with inf and sup.",
