@@ -25,6 +25,7 @@ const data: IChapterData[] = [
     {
         chapter: 2,
         title: {en: "Highlights of Abstract Linear Algebra", ko: "추상 선형대수의 핵심"},
+        contents: lazy(() => import("./Chapter2")),
         sections: [
             {en: "Fields and Vector Spaces", ko: "체와 벡터 공간"},
             {en: "Subspaces", ko: "부분 공간"},
@@ -34,6 +35,8 @@ const data: IChapterData[] = [
             {en: "Linear Operators and Matrix Representations", ko: "선형 연산자와 행렬 표현"},
             {en: "Eigenvalues, Eigenvectors, and Diagonalization", ko: "고윳값, 고유벡터, 대각화"},
             {en: "A Few Additional Properties of Matrices", ko: "행렬의 추가 성질"},
+            {en: "Why Robotics", ko: "로봇에서 왜 필요한가"},
+            {en: "References", ko: "References"},
         ],
     },
     {
