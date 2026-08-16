@@ -28,7 +28,6 @@ for every key idea.
 - [Tech stack](#tech-stack)
 - [Getting started](#getting-started)
 - [Project structure](#project-structure)
-- [Sample code](#sample-code)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
 
@@ -49,26 +48,29 @@ The repo name traces the spine of the course — from proofs and abstract linear
 least squares and matrix factorizations to the Kalman filter — but the notes cover **all seven
 chapters**, including the real analysis and optimization that close the course.
 
-| Path            | What it is                                                              |
-| --------------- | ----------------------------------------------------------------------- |
-| `document/`     | The study web app (React + Vite + TypeScript). This is what's deployed. |
-| `sample_code/`  | Standalone Python and MATLAB reference implementations, by chapter.     |
+Everything lives in `document/`, the study web app (React + Vite + TypeScript). That is what gets
+deployed, and there is nothing else to install.
 
 Each chapter page combines prose (English and Korean) with KaTeX-rendered derivations, explicit
 **Definition / Theorem / Proof** blocks, and interactive **Konva** 2D figures. Proofs are
 collapsible: skim the results, or open the argument and follow it step by step.
 
+The algorithms are not described and then left on the page. They **run in the browser**: the SVD
+figures compute a one-sided Jacobi decomposition, the Kalman figure steps a real filter, and the
+optimization figures solve their own QPs and LPs. Dragging a point re-runs the computation and the
+readouts update, so the numbers you see are computed, not illustrated.
+
 ## Chapters
 
-| #  | Title                                          | Highlights                                                                                     | Sample code |
-| -- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------- |
-| 1  | Introduction to Mathematical Arguments         | Proof techniques, truth tables, negating quantified statements, sup/inf                        | —           |
-| 2  | Highlights of Abstract Linear Algebra          | Vector spaces, subspaces, basis and dimension, change of basis, diagonalization                | —           |
-| 3  | Inner Product Spaces and Least Squares         | Norms, Gram-Schmidt, the projection theorem, quadratic forms, least squares                    | —           |
-| 4  | Three Useful Matrix Factorizations             | QR, SVD and numerical rank, LU with pivoting, Cholesky                                         | —           |
-| 5  | Probability, Estimation, and the Kalman Filter | BLUE and MVE, Gaussian conditioning, the discrete-time Kalman filter, EKF                      | —           |
-| 6  | Real Analysis: Limits and Extrema              | Open/closed sets, Cauchy sequences, contraction mapping, compactness and extrema               | —           |
-| 7  | Brief Remarks on Optimization                  | Convex sets and functions, quadratic programs, LPs for the 1-norm and max-norm                 | —           |
+| #  | Title                                          | Highlights                                                                       | Figures |
+| -- | ---------------------------------------------- | -------------------------------------------------------------------------------- | ------- |
+| 1  | Introduction to Mathematical Arguments         | Proof techniques, truth tables, negating quantified statements, sup/inf          | 4       |
+| 2  | Highlights of Abstract Linear Algebra          | Vector spaces, subspaces, basis and dimension, change of basis, diagonalization  | 4       |
+| 3  | Inner Product Spaces and Least Squares         | Norms, Gram-Schmidt, the projection theorem, quadratic forms, least squares      | 5       |
+| 4  | Three Useful Matrix Factorizations             | QR, SVD and numerical rank, LU with pivoting, Cholesky                           | 6       |
+| 5  | Probability, Estimation, and the Kalman Filter | BLUE and MVE, Gaussian conditioning, the discrete-time Kalman filter, EKF        | 6       |
+| 6  | Real Analysis: Limits and Extrema              | Open/closed sets, Cauchy sequences, contraction mapping, compactness and extrema | 6       |
+| 7  | Brief Remarks on Optimization                  | Convex sets and functions, quadratic programs, LPs for the 1-norm and max-norm   | 5       |
 
 > Chapters live at path URLs, e.g. `…/linear_algebra_to_kalman/chapter/2/`; Korean adds `?lang=ko`.
 > Section deep links use `#hash` anchors.
@@ -135,24 +137,18 @@ linear_algebra_to_kalman/
 │       ├── App.tsx               # routes: /, /chapter/:n
 │       ├── libs/                 # i18n, nav, seo, search, slug, theme helpers
 │       ├── components/
-│       │   ├── 2d/               # Konva coordinate canvas
+│       │   ├── 2d/               # Konva coordinate canvas, R² plane, contour helper
 │       │   ├── math/             # KaTeX wrappers, Terms, Statement / Proof blocks
 │       │   ├── CanvasFigure.tsx  # figure wrapper: caption + full-screen modal
-│       │   ├── CodeTabs.tsx      # python / matlab source panel
-│       │   └── pages/chapter{1..7}/   # per-chapter interactive figures
+│       │   └── pages/chapter{1..7}/   # per-chapter interactive figures (36 in total)
 │       └── pages/
 │           ├── home/             # landing: keyword chips, part-grouped cards
 │           └── chapters/         # Chapter{1..7}.tsx, metadata index, shared blurbs
-└── sample_code/
-    └── chapter<N>/{python,matlab}/
 ```
 
-## Sample code
-
-Reference implementations live under `sample_code/<chapter>/<language>/` and are linked from the
-chapter cards in the app. The course itself is MATLAB-based, so MATLAB scripts stay close to the
-original assignments; the Python versions are there so readers can run everything without a
-MATLAB license.
+Numerical routines the figures share live beside them: `chapter4/svd.ts` (one-sided Jacobi SVD),
+`chapter5/gauss.ts` (Gaussian conditioning and the filter recursion), `chapter6/analysis.ts`
+(iteration and convergence helpers), and `chapter7/optimize.ts` (QP and LP solvers).
 
 ## Deployment
 
@@ -164,7 +160,7 @@ prerendered shells, and a `404.html` SPA fallback.
 ## Contributing
 
 1. Fork the repo and create a feature branch (`feature/…`).
-2. Make changes under `document/` (and `sample_code/` if adding examples).
+2. Make changes under `document/`.
 3. Verify with `yarn build` **and** `yarn typecheck`, then check the affected chapter in the
    browser (both `?lang=ko` and English, light and dark) for console errors.
 4. Open a PR against `robotics-study/linear_algebra_to_kalman` `main`.

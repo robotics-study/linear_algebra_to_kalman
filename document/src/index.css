@@ -19,13 +19,6 @@
     --border: #e2e8f0;
     --code-bg: #f6f8fa;
     --code-text: #1f2937;
-    /* 코드 구문 하이라이트 토큰 (light) — components/CodeHighlight 가 읽는다 */
-    --tok-comment: #6a737d;
-    --tok-tag: #116329;
-    --tok-attr: #6f42c1;
-    --tok-string: #0a3069;
-    --tok-expr: #953800;
-    --tok-punct: #57606a;
     --shadow: 0 1px 3px rgba(15, 23, 42, .08), 0 8px 24px rgba(15, 23, 42, .05);
     --radius: 14px;
     --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
@@ -34,8 +27,6 @@
     --sidebar-w: 250px;
     --toc-w: 210px;
     --content-w: 940px;
-    /* code-links chip 의 화살괄호 아이콘 (mask 로 currentColor 적용) */
-    --code-ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m8 6-6 6 6 6M16 6l6 6-6 6'/%3E%3C/svg%3E");
 }
 
 :root[data-theme="dark"] {
@@ -50,13 +41,6 @@
     --border: #24304a;
     --code-bg: #0e1526;
     --code-text: #dbe4f3;
-    /* 코드 구문 하이라이트 토큰 (dark) */
-    --tok-comment: #8b949e;
-    --tok-tag: #7ee787;
-    --tok-attr: #d2a8ff;
-    --tok-string: #a5d6ff;
-    --tok-expr: #ffa657;
-    --tok-punct: #8b949e;
     --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 12px 30px rgba(0, 0, 0, .35);
 }
 
@@ -73,12 +57,6 @@
         --border: #24304a;
         --code-bg: #0e1526;
         --code-text: #dbe4f3;
-        --tok-comment: #8b949e;
-        --tok-tag: #7ee787;
-        --tok-attr: #d2a8ff;
-        --tok-string: #a5d6ff;
-        --tok-expr: #ffa657;
-        --tok-punct: #8b949e;
         --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 12px 30px rgba(0, 0, 0, .35);
     }
 }
@@ -503,52 +481,10 @@
 }
 
 /* 소스 코드 링크 chip */
-.code-links {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    margin: -.1em 0 1.6em;
-}
 
-.code-links .cl-label {
-    font-size: .74rem;
-    font-weight: 700;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-right: 2px;
-}
 
-.code-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 12px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: var(--surface);
-    color: var(--text);
-    font-size: .82rem;
-    font-weight: 600;
-    font-family: var(--mono);
-}
 
-.code-links a::before {
-    content: "";
-    width: 13px;
-    height: 13px;
-    flex: none;
-    background: currentColor;
-    -webkit-mask: var(--code-ico) center/contain no-repeat;
-    mask: var(--code-ico) center/contain no-repeat;
-}
 
-.code-links a:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    text-decoration: none;
-}
 
 .content-inner h2 {
     font-size: 1.42rem;
@@ -1186,24 +1122,7 @@ h3:hover .anchor {
 }
 
 /* 작은 소스코드 chip (카드 내부) */
-.mini-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 11px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-size: .74rem;
-    font-weight: 600;
-    color: var(--muted);
-    background: var(--surface);
-    font-family: var(--mono);
-}
 
-a.mini-chip:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    text-decoration: none;
-}
 
 .soon {
     font-size: .66rem;

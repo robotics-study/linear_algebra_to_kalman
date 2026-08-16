@@ -1,4 +1,4 @@
-import {ISupportedExample, Localized} from "../../../types/global";
+import {Localized} from "../../../types/global";
 import chapters from "../chapters";
 import {CHAPTER_BLURBS, PARTS} from "../chapters/roadmap";
 import BrandLogo from "../../components/BrandLogo";
@@ -7,18 +7,13 @@ import {useLang, useTr, pick} from "../../libs/i18n";
 
 const REPO = "https://github.com/robotics-study/linear_algebra_to_kalman"
 
-const ChapterCard = ({chapter, title, blurb, supportedExample, onOpen}: {
+const ChapterCard = ({chapter, title, blurb, onOpen}: {
     chapter: number
     title: Localized
     blurb?: Localized
-    supportedExample?: ISupportedExample
     onOpen: () => void
 }) => {
     const {lang} = useLang()
-    const t = useTr()
-    const langs = supportedExample
-        ? Object.entries(supportedExample).filter(([, v]) => v).map(([lang]) => lang)
-        : []
     return (
         <div className="doc-card clickable" role="button" tabIndex={0}
              onClick={onOpen}
@@ -28,17 +23,6 @@ const ChapterCard = ({chapter, title, blurb, supportedExample, onOpen}: {
                 <span className="dc-title">{pick(lang, title)}</span>
             </div>
             {blurb && <p className="dc-blurb">{pick(lang, blurb)}</p>}
-            {langs.length > 0 && (
-                <div className="chips">
-                    {langs.map((codeLang) => (
-                        <a key={codeLang} className="mini-chip" target="_blank" rel="noreferrer"
-                           onClick={(e) => e.stopPropagation()}
-                           href={`${REPO}/tree/main/sample_code/chapter${chapter}/${codeLang}`}>
-                            {t(`${codeLang} code`, `${codeLang} 코드`)}
-                        </a>
-                    ))}
-                </div>
-            )}
         </div>
     )
 }
@@ -95,7 +79,6 @@ const Home = () => {
                                 {inPart.map((c) => (
                                     <ChapterCard key={c.chapter} chapter={c.chapter} title={c.title}
                                                  blurb={blurbOf(c.chapter)}
-                                                 supportedExample={c.supportedExample}
                                                  onOpen={() => go(c.chapter)}/>
                                 ))}
                             </div>
