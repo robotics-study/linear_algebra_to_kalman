@@ -32,6 +32,30 @@ not paragraphs of prose.
 - When the notes mark a section "(Optional Read)", keep the material but say plainly that it can
   be skipped on a first pass.
 
+## Teach, don't transcribe
+
+The source notes are terse: proofs skip algebra, and definitions arrive abstract with nothing
+attached to them. **The site's job is to close those gaps.** A page should be easier to learn from
+than the notes it is based on, not a faithful copy of them.
+
+- **Every abstract definition gets a concrete instance immediately after it** — the smallest thing
+  that makes it real (one specific 2×2 matrix, one specific basis of R², one specific polynomial in
+  P₂). Where it sharpens the definition, add a **non-example that fails exactly one clause**: a set
+  closed under addition but not scalar multiplication is not a subspace, and seeing that is worth
+  more than re-reading the clause.
+- **Fill in the steps the notes skip.** Wherever the source writes "it follows that" or "clearly",
+  or jumps several lines of algebra, write the intermediate lines. A reader must never have to
+  reconstruct a step on paper. If the notes prove only a special case, say so rather than letting
+  the gap pass silently.
+- **Numbers before symbols.** Introduce a hard idea on a concrete case first, then state the
+  general version. A change-of-basis matrix means nothing until the reader has watched one specific
+  vector receive two different coordinate columns.
+- **Every `Example` carries actual numbers**, not another symbolic restatement of the theorem. If
+  the source's example is purely symbolic, add a numeric instance beside it.
+- Prefer the smallest example that still shows the phenomenon: 2×2 over 4×4, R² over Rⁿ.
+- Keep the page skimmable anyway: long arithmetic goes inside the collapsible `Proof`, not in the
+  main column.
+
 ## Chapters must be visual
 
 **Every chapter teaches visually, not just in symbols.** Each major concept gets an interactive or
