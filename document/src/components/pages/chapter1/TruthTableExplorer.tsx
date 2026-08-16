@@ -47,7 +47,7 @@ const TruthTableExplorer = () => {
     return (
         <div className="w-full">
             <div className="overflow-x-auto">
-                <table className="w-full text-center text-sm border-collapse">
+                <table className="table-center text-sm">
                     <thead>
                     <tr>
                         {columns.map((c) => (

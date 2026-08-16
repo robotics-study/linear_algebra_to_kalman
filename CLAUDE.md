@@ -71,6 +71,12 @@ The `sections[]` array in `pages/chapters/index.ts` lists the same headings in t
 - **Every display equation needs `Terms`** — put `components/math/Terms` directly under each
   `BlockMath` and define **every** symbol there, including ones defined earlier on the page or in
   an earlier chapter. The reader should never have to scroll back to decode a formula.
+- **Display math and tables center on the content column.** Any container that holds them needs
+  **symmetric horizontal padding** — an indent on one side only (a nested proof, a callout) shifts
+  every equation inside it off-center. Overflowing display math falls back to start alignment via
+  `justify-content: safe center`, so a wide equation can be scrolled from its beginning instead of
+  being clipped on both ends. Tables are `display:block; width:fit-content; margin:auto` so they
+  center yet scroll themselves rather than the page.
 - **Reuse the shared scaffolding** — `CanvasFigure`, `CoordinateCanvas`, `konvaUtils`. Don't
   re-implement axes, grids, or coordinate math.
 - **Theme-aware colors** — canvases can't read CSS variables. Read colors from `useCanvasColors()`
