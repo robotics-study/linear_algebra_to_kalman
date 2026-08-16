@@ -95,6 +95,18 @@ The `sections[]` array in `pages/chapters/index.ts` lists the same headings in t
 - **Every display equation needs `Terms`** — put `components/math/Terms` directly under each
   `BlockMath` and define **every** symbol there, including ones defined earlier on the page or in
   an earlier chapter. The reader should never have to scroll back to decode a formula.
+- **All math renders through KaTeX. Never type Unicode math into HTML.** `<InlineMath/>` for
+  symbols inside prose, table cells, list items, and statement **titles** (`title` takes a
+  ReactNode, so wrap it in `<T en={<>…</>} ko={<>…</>}/>`); `<BlockMath/>` for display equations.
+  Raw `α β γ ≤ ≥ ≠ ∈ ⊂ ∀ ∃ √ ∞ ² ⋯ × −` in a string renders in the UI sans font and looks visibly
+  wrong beside real KaTeX on the same line, Greek letters worst of all. Write `\alpha`, `\le`,
+  `\in`, `\sqrt{2}`, `x^2`, `\cdots`, `\times`, `-`. The one exception is Konva canvas text, which
+  cannot host KaTeX; keep the surrounding HTML controls in the monospace figure style.
+- **No display equation may overflow the content column on desktop.** Break long chains with
+  `\begin{aligned}` at `=` or `\implies` rather than letting them scroll sideways. Verify by
+  measuring, not by eye: for each `.katex-display`, `katex.getBoundingClientRect().width` must not
+  exceed `container.clientWidth` at a 1280px viewport with every proof expanded. Overflow on a
+  390px phone is unavoidable and stays acceptable.
 - **Display math and tables center on the content column.** Any container that holds them needs
   **symmetric horizontal padding** — an indent on one side only (a nested proof, a callout) shifts
   every equation inside it off-center. Overflowing display math falls back to start alignment via
@@ -146,4 +158,37 @@ works. Run `yarn build` **and** `yarn typecheck` before opening a PR.
 ## Source material
 
 The original PDF is **not** committed here (`*.pdf` is gitignored). Keep a local copy for
-authoring; link readers to <https://github.com/michiganrobotics/rob501> instead.
+authoring; link readers to <https://github.com/michiganrobotics/rob501> instead. Rendered page
+images are an authoring aid only: keep them in a scratch directory, never in the repo, and never
+publish them. The site's figures are all original work.
+
+### Transcribe math from rendered page images, never from the text layer
+
+**This PDF's text layer maps Greek letters and symbols to the wrong codepoints.** Extracting text
+and copying the glyphs produces statements that are simply false: `α, β ∈ 𝓕` comes out as
+`ϑ, ϖ ∈ F`. Confirmed against the printed pages:
+
+| text layer emits | the page actually shows |
+|---|---|
+| `ϑ` U+03D1 | **α** |
+| `ϖ` U+03D6 | **β** |
+| `ς` U+03C2 | **γ** |
+| plain `F`, `X` | calligraphic **𝓕**, **𝓧** |
+| `→` `↑` `↓` `↘` `=≃` `⇐≃` `↖` `⇔` `↗=` `↔` `⇑` `⇓` `↫` `↙` `′` `∝` | ∀ ∃ ∈ ¬ ⟹ ⟺ ≤ ≥ ≠ − ∧ ∨ □ √ ∞ ⊂ |
+| ~1,900 U+F8xx private-use codepoints | large delimiters with no Unicode mapping at all |
+
+Overbars vanish entirely, so `P` and `P̄` are indistinguishable in extracted text. That one has
+already produced a wrong theorem statement once.
+
+So: render each page and read it as an image.
+
+```python
+import fitz, pathlib
+d = fitz.open("ROB501_Textbook2022_03_21.pdf")
+for p in range(20, 40):                 # 0-indexed; printed page 21..40
+    d[p].get_pixmap(dpi=150).save(f"<scratch>/pdf-p{p+1}.png")
+```
+
+Use the text layer for prose wording and section structure only. **Every equation, symbol, and
+definition clause gets transcribed from the image.** Before opening a PR, grep your own output for
+`ϑ ϖ ς ℜ` and the private-use range and confirm zero hits.
