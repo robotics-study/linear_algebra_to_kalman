@@ -5,7 +5,7 @@ import cn from "../../../libs/cn";
 import {useTr} from "../../../libs/i18n";
 import {useCanvasColors} from "../../../libs/useTheme";
 import {useMeasuredWidth} from "../../../libs/useMeasuredWidth";
-import {DragDot, fmt, makePlane, norm, SpanLine, VecArrow} from "./plane";
+import {DragDot, fmt, makePlane, norm, SpanLine, VecArrow} from "../../2d/plane";
 
 // 선형 독립은 "0을 만드는 자명하지 않은 조합이 있는가"라는 대수 조건이지만, R² 에서는
 // 평행사변형이 납작해지는 순간으로 보인다. det → 0 과 span 이 직선으로 무너지는 것이 같은 사건이다.

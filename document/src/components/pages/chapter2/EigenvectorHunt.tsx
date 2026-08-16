@@ -5,7 +5,7 @@ import cn from "../../../libs/cn";
 import {useTr} from "../../../libs/i18n";
 import {useCanvasColors} from "../../../libs/useTheme";
 import {useMeasuredWidth} from "../../../libs/useMeasuredWidth";
-import {DragDot, fmt, makePlane, SpanLine, VecArrow} from "./plane";
+import {DragDot, fmt, makePlane, SpanLine, VecArrow} from "../../2d/plane";
 
 // e-vector 의 정의는 "Av 가 v 와 같은 직선 위에 놓이는 방향"이다. 단위원을 한 바퀴 돌면서
 // Av 를 같이 그려 보면, 두 화살표가 겹치는 각이 곧 e-vector 이고 그때의 배율이 e-value 다.

@@ -1,8 +1,8 @@
 import {KonvaEventObject} from "konva/lib/Node";
 import {Arrow, Circle, Line, Text} from "react-konva";
-import {globalToMap, mapToGlobal} from "../../../libs/konvaUtils";
+import {globalToMap, mapToGlobal} from "../../libs/konvaUtils";
 
-// 2장 그림은 모두 같은 R² 평면 위에서 논다. 축과 눈금은 CoordinateCanvas 가 그리므로
+// R² 평면 위에서 노는 그림들의 공용 배율/도형 헬퍼. 축과 눈금은 CoordinateCanvas 가 그리므로
 // 여기서는 그 resolution 과 정확히 같은 배율로 단위 좌표 ↔ 픽셀 변환만 제공한다.
 // (배율을 각 그림이 따로 계산하면 축 눈금과 벡터가 어긋난다.)
 export interface Plane {
